@@ -56,10 +56,20 @@ def plotquantiles(df, col, minq=0.2, maxq=0.8, n=7, plot_mean=True, plot_med=Tru
     return plt.gca() 
 
 def my_autopct(pct):
+    ''' Shows labels in pie chart if the percentage is greater than 7 to prevent label clusters and overlaps.
+    '''
     return ('%1.1f%%' % pct) if pct > 7 else ''
 
 def pie_chart(data):
+    ''' Creates a pie chart for flat types
     
+    Parameters:
+    data: pandas Dataframe created from Flats class
+    
+    Returns:
+    matplotlib plot object
+    
+    '''
     mpl.rcParams['axes.prop_cycle'] = mpl.cycler(color=Category20[20]) 
     
     categories = data['Type'].value_counts()
@@ -82,7 +92,7 @@ def allplots(df, quant=['Area', 'Price', 'Ppm2'], pie=True, flat_count=True, Ppm
     Parameters:
     df : pandas DataFrame created from Flats class
     quant (list): List of column names to be used for quantile plots, 10th - 90th quantile are used 
-    pie (list): List of column names to be used for pie charts
+    pie (bool): Plot pie chart for flat types
     flat_count (bool): Plot number of available flats through time
     Ppm2_detail (bool): Plot Ppm2 "zoom" showing only mean, median and 45th and 55th quantile
     flat_type (list): List of types of flats used for calculation, example: ['1+kk','4+kk'], if empty uses all types
