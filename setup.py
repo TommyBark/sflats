@@ -6,6 +6,7 @@ setup(name='sflats',
       url='https://github.com/TommyBark/sflats',
       author='TommyBark & mjartanv',
       packages=['sflats'],
-      install_requires=['pandas','numpy','matplotlib','seaborn','folium','plotly','ipywidgets','webbrowser']
+      install_requires=['pandas', 'numpy', 'matplotlib',
+                        'seaborn', 'folium', 'plotly', 'ipywidgets','bokeh'],
+      include_package_data=True,
       zip_safe=False)
-
